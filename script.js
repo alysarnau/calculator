@@ -13,6 +13,7 @@ function operate(operator, a, b) {
 // in the next step.
 
 let displayValue;
+// key selectors
 const zero = document.querySelector("#zero");
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
@@ -23,3 +24,15 @@ const six = document.querySelector("#six");
 const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
+
+//REMEMBER when we type things in we want to append the text to the display textContent
+
+//display selector
+let display = document.querySelector("#display");
+
+// Clear Button Functionality
+const clear = document.querySelector("#clear");
+function clearDisplay() {
+    display.textContent ="";
+}
+clear.addEventListener('click', clearDisplay);
