@@ -1,0 +1,10 @@
+div {
+    padding: 5px;
+}
+
+#display {
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+}
