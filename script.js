@@ -8,13 +8,13 @@ const subtract = function(a,b) {
 	return a - b;
 };
 
-const sum = function(array) {
-	return array.reduce((partialSum, newValue) => partialSum + newValue, 0);
+const multiply = function(a,b) {
+  return a * b;
 };
 
-const multiply = function(array) {
-  return array.reduce((a,b) => a * b);
-};
+const divide = function(a,b) {
+    return a / b;
+}
 
 const power = function(a,b) {
 	return a ** b;
