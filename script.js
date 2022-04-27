@@ -13,18 +13,6 @@ const factorial = (num) => {
   return num;
 }
 
-function operate(a,operator,b) {
-  if (operator === "+") {
-    return add(a,b);
-  } else if (operator === "-") {
-    return subtract(a,b);
-  } else if (operator === "*") {
-      return multiply(a,b);
-  } else if (operator === "/") {
-    return divide(a,b);  
-  } else if (operator === "**") {
-    return power(a,b);
-  } else {
-  return "OOPS";
-  }
+function operate(operator, a, b) {
+    return operator(a, b);
 }
