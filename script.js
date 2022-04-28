@@ -7,12 +7,15 @@ const power = (a,b) => a ** b;
 function operate(operator, a, b) {
     return operator(a, b);
 }
-
+let operator;
 //
 const operators = document.querySelectorAll(".operators");
-  operators.forEach(operator => operator.addEventListener('click', e => {
-    let operator = e.target.id;  
-    //need to get this to be saved properly
+operators.forEach(operator => operator.addEventListener('click', e => {
+  operator = e.target.id; 
+  displayValue = display.textContent; 
+  a = parseInt(displayValue); 
+  console.log(operator);
+    //once you click the operator button, the value in the display saves as a
   }
 ))
 
@@ -53,7 +56,7 @@ let displayValue;
 // Sum functionality
 const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
-  let displayValue = display.textContent; 
+  displayValue = display.textContent; 
   a = displayValue;
   console.log(a);
   console.log(operate(add,2,2))
