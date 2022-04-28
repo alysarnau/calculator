@@ -1,3 +1,7 @@
+let a;
+let b;
+let operator;
+
 const add = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
@@ -7,16 +11,15 @@ const power = (a,b) => a ** b;
 function operate(operator, a, b) {
     return operator(a, b);
 }
-let operator;
-//
+ 
 const operators = document.querySelectorAll(".operators");
 operators.forEach(operator => operator.addEventListener('click', e => {
-  operator = e.target.id; 
+  let operator = e.target.id; 
   displayValue = display.textContent; 
   a = parseInt(displayValue); 
   console.log(operator);
-    //once you click the operator button, the value in the display saves as a
-  }
+  resultPara.textContent = `${a} ${operator}`;
+}
 ))
 
 // digit buttons
@@ -27,6 +30,13 @@ const digits = document.querySelectorAll(".digits");
       display.textContent += e.target.id;
   })
 );
+
+//store a, b, and operator in a text field just for kicks
+const sumClear = document.querySelector('.sumClear');
+const resultPara = document.createElement('p');
+sumClear.appendChild(resultPara);
+
+
 
 // key selectors
 const zero = document.querySelector("#zero");
@@ -57,12 +67,7 @@ let displayValue;
 const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
-  a = displayValue;
-  console.log(a);
-  console.log(operate(add,2,2))
+  b = parseInt(displayValue);
+  console.log(b);
   }
 );
- // use this with sum instead
-function operate(operator, a, b) {
-    return operator(a, b);
-}
