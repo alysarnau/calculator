@@ -7,16 +7,20 @@ const power = (a,b) => a ** b;
 function operate(operator, a, b) {
     return operator(a, b);
 }
-// Create the functions that populate the display when 
-// you click the number buttons… you should be storing 
-// the ‘display value’ in a variable somewhere for use 
-// in the next step.
 
-let displayValue;
+//
+const operators = document.querySelectorAll(".operators");
+  operators.forEach(operator => operator.addEventListener('click', e => {
+    let operator = e.target.id;  
+    //need to get this to be saved properly
+  }
+))
+
 // digit buttons
 const digits = document.querySelectorAll(".digits");
 // add click function to all digits
   digits.forEach(digit => digit.addEventListener('click', e => {
+      //this appends the number to display
       display.textContent += e.target.id;
   })
 );
@@ -33,15 +37,6 @@ const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
 
-// create the function(S) that populate the display when click the number buttons
-// create eventListener for click to add X value to display
-// can use key-value to set numbers per one? so one function per digit button?
-  // remember to add in loop to add it to all buttons
-
-
-//REMEMBER when we type things in we want to append the text to the display textContent
-// display.textContent += 
-
 //display selector
 let display = document.querySelector("#display");
 
@@ -51,3 +46,20 @@ function clearDisplay() {
     display.textContent ="";
 }
 clear.addEventListener('click', clearDisplay);
+
+//declare displayValue
+let displayValue;
+
+// Sum functionality
+const sum = document.querySelector("#sum");
+sum.addEventListener('click', e => {
+  let displayValue = display.textContent; 
+  a = displayValue;
+  console.log(a);
+  console.log(operate(add,2,2))
+  }
+);
+ // use this with sum instead
+function operate(operator, a, b) {
+    return operator(a, b);
+}
