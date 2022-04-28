@@ -1,6 +1,7 @@
 let a;
 let b;
 let mainOperator;
+let result;
 
 const add = (a,b) => a + b;
 const subtract = (a,b) => a - b;
@@ -9,7 +10,19 @@ const divide = (a,b) => a / b;
 const power = (a,b) => a ** b;
 
 function operate(mainOperator, a, b) {
-    return mainOperator(a, b);
+    if (mainOperator === "multiply") {
+        return multiply(a,b);
+    } else if (mainOperator === "divide"){
+        return divide(a,b);
+    } else if (mainOperator === "add"){
+        return add(a,b);
+    } else if (mainOperator === "subtract"){
+        return subtract(a,b);
+    } else if (mainOperator === "power"){
+        return power(a,b);
+    } else {
+      return "ERROR";
+    }
 }
 
 // operator selectors
@@ -77,8 +90,9 @@ const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
-  resultPara.textContent = `${a} ${mainOperator} ${b} equals ...`;
-  //this guy is returning TypeError
   console.log(operate(mainOperator,a,b));
+  result = operate(mainOperator,a,b);
+  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
+  return result;
   }
 );
