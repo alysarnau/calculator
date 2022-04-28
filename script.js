@@ -16,8 +16,9 @@ let displayValue;
 // digit buttons
 const digits = document.querySelectorAll(".digits");
 // add click function to all digits
-  digits.forEach(digit => digit.addEventListener('click', function(e) {
+  digits.forEach(digit => digit.addEventListener('click', e => {
       digit.style.background = "blueviolet";
+      console.log(e.target.id);
   })
 );
 
