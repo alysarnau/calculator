@@ -9,7 +9,7 @@ const divide = (a,b) => a / b;
 const power = (a,b) => a ** b;
 
 function operate(mainOperator, a, b) {
-    return operator(a, b);
+    return mainOperator(a, b);
 }
 
 // operator selectors
@@ -22,7 +22,7 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   mainOperator = operator;
   resultPara.textContent = `${a} ${mainOperator}`;
   clearDisplay();
-  console.log(mainOperator);
+  return mainOperator;
 }
 ))
 
@@ -64,7 +64,10 @@ const clear = document.querySelector("#clear");
 function clearDisplay() {
     display.textContent ="";
 }
-clear.addEventListener('click', clearDisplay);
+clear.addEventListener('click', e => {
+    clearDisplay();
+    resultPara.textContent = '';
+});
 
 //declare displayValue
 let displayValue;
@@ -74,8 +77,8 @@ const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
-  //CHALLENGE operator is not sticking around
-  resultPara.textContent = `${a} ${mainOperator} ${b} equals`
-  console.log(b);
+  resultPara.textContent = `${a} ${mainOperator} ${b} equals ...`;
+  //this guy is returning TypeError
+  console.log(operate(mainOperator,a,b));
   }
 );
