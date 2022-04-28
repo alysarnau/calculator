@@ -19,6 +19,7 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   a = parseInt(displayValue); 
   console.log(operator);
   resultPara.textContent = `${a} ${operator}`;
+  clearDisplay();
 }
 ))
 
