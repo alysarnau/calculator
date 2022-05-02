@@ -7,7 +7,6 @@ const add = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
 const divide = (a,b) => a / b;
-const power = (a,b) => a ** b;
 
 function operate(mainOperator, a, b) {
     if (mainOperator === "multiply") {
@@ -18,8 +17,6 @@ function operate(mainOperator, a, b) {
         return add(a,b);
     } else if (mainOperator === "subtract"){
         return subtract(a,b);
-    } else if (mainOperator === "power"){
-        return power(a,b);
     } else {
       return "ERROR";
     }
@@ -97,3 +94,6 @@ sum.addEventListener('click', e => {
   return result;
   }
 );
+
+// need to set up DEL functionality
+// need to set up decimal limitation
