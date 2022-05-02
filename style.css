@@ -2,6 +2,11 @@ body {
     font-family: "Comic Sans MS", "QD Better Comic Sans", sans-serif;
 }
 
+#calc-container {
+    height: 500px;
+    width: 400px;
+}
+
 div {
     padding: 5px;
 }
@@ -11,11 +16,47 @@ div {
     border-radius: 5px;
     padding: 5px;
     box-sizing: border-box;
-    height: 30px;
-    width: 200px;
+    height: 75px;
+    /* width: 100px; */
 }
 
-.click {
-    background-color: blueviolet;
+.nonDisplay {
+    display: flex;
 }
+
+div#digits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+div.operators,
+div.digits,
+#sum,
+#clear,
+#del {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+div.digits {
+  background-color: lightblue;
+}
+
+div.operators {
+    background-color: yellow;
+}
+
+#sum,
+#clear,
+#del {
+    background-color: lightgray;
   
+/* button {
+    height: 75px;
+    width: 100px;
+} */
