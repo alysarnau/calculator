@@ -93,6 +93,7 @@ sum.addEventListener('click', e => {
   console.log(operate(mainOperator,a,b));
   result = operate(mainOperator,a,b);
   resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
+  display.textContent = `${result}`;
   return result;
   }
 );
