@@ -73,7 +73,7 @@ let display = document.querySelector("#display");
 // Clear Button Functionality
 const clear = document.querySelector("#clear");
 function clearDisplay() {
-    display.textContent ="";
+    display.textContent ='';
 }
 clear.addEventListener('click', e => {
     clearDisplay();
@@ -97,4 +97,11 @@ sum.addEventListener('click', e => {
 );
 
 // need to set up DEL functionality
+const del = document.querySelector("#del");
+del.addEventListener('click', e => {
+    let onScreen = display.textContent 
+    onScreen = onScreen.slice(0, -1);
+    display.textContent = onScreen;
+});
+
 // need to set up decimal limitation
