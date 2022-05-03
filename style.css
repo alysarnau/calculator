@@ -1,5 +1,6 @@
 body {
     font-family: "Comic Sans MS", "QD Better Comic Sans", sans-serif;
+    font-size: 20px;
 }
 
 #calc-container {
@@ -17,6 +18,9 @@ body {
     box-sizing: border-box;
     height: 75px;
     background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
 }
 
 .nonDisplay {
@@ -37,33 +41,26 @@ div.digits,
 #sum,
 #clear,
 #del {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border: 1px solid black;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 div.digits {
   background-color: #EDAFB8;
-  /* grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 7; */
+
 }
 
 div.operators {
     background-color: #B0C4B1;
-    /* grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 7; */
+
 }
 
 .sumClear {
-    /* grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3; */
 }
 
 #clear,
