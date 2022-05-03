@@ -47,8 +47,9 @@ digits.forEach(digit => digit.addEventListener('click', e => {
 
 //store a, b, and operator in a text field just for kicks
 const sumClear = document.querySelector('.sumClear');
+const calc = document.querySelector('#calc-container');
 const resultPara = document.createElement('p');
-sumClear.appendChild(resultPara);
+calc.appendChild(resultPara);
 
 //numbers create the displayValue
 //when click the operator button, that value is saved as "a"
