@@ -88,10 +88,9 @@ const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
-  console.log(operate(mainOperator,a,b));
   result = operate(mainOperator,a,b);
-  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
-  display.textContent = `${result}`;
+  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(3)}`;
+  display.textContent = `${result.toFixed(3)}`;
   return result;
   }
 );
