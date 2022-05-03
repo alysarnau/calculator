@@ -39,6 +39,7 @@ body {
 
 div .sumClear {
   display: flex;
+  gap: 3px;
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 1;
@@ -75,8 +76,8 @@ div.operators {
     background-color: #F7E1D7;
 }
 
-#del {
-    grid-column: 2 / span 2;
+#del,
+#clear {
     width: 146px;
 }
 
