@@ -71,10 +71,11 @@ const nine = document.querySelector("#nine");
 let display = document.querySelector("#display");
 
 // Clear Button Functionality
+// !!! NEED TO MAKE SURE DATA IS FULLY CLEARED
 const clear = document.querySelector("#clear");
 function clearDisplay() {
-    display.textContent ='';
-}
+    display.textContent = '';
+};
 clear.addEventListener('click', e => {
     clearDisplay();
     resultPara.textContent = '';
@@ -89,8 +90,8 @@ sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
   result = operate(mainOperator,a,b);
-  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(3)}`;
-  display.textContent = `${result.toFixed(3)}`;
+  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(1)}`;
+  display.textContent = `${result.toFixed(1)}`;
   return result;
   }
 );
@@ -103,4 +104,5 @@ del.addEventListener('click', e => {
     display.textContent = onScreen;
 });
 
-// need to set up decimal limitation
+// Display snarky error message if user tries to divide by 0
+
