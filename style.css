@@ -21,19 +21,28 @@ body {
     display: flex;
     align-items: center;
     font-size: 28px;
+    margin-bottom: 5px;
 }
 
 .nonDisplay {
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
+    gap: 3px;
+    grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 7;
+    justify-content: space-around;
+    align-items: center;
 }
 
-div#digits {
+div .sumClear {
+  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 div.operators,
@@ -41,13 +50,14 @@ div.digits,
 #sum,
 #clear,
 #del {
-    width: 80px;
+    width: 95px;
     height: 80px;
     border: 1px solid black;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
 }
 
 div.digits {
@@ -57,14 +67,21 @@ div.digits {
 
 div.operators {
     background-color: #B0C4B1;
-
-}
-
-.sumClear {
 }
 
 #clear,
 #sum,
 #del {
     background-color: #F7E1D7;
+}
+
+#del {
+    grid-column: 2 / span 2;
+    width: 146px;
+}
+
+
+#sum {
+    grid-column: span 2;
+    width: 195px;
 }
