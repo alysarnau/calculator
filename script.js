@@ -71,7 +71,6 @@ const nine = document.querySelector("#nine");
 let display = document.querySelector("#display");
 
 // Clear Button Functionality
-// !!! NEED TO MAKE SURE DATA IS FULLY CLEARED
 const clear = document.querySelector("#clear");
 function clearDisplay() {
     display.textContent = '';
@@ -79,6 +78,9 @@ function clearDisplay() {
 clear.addEventListener('click', e => {
     clearDisplay();
     resultPara.textContent = '';
+    a = '';
+    b = '';
+    mainOperator = '';
 });
 
 //declare displayValue
@@ -106,10 +108,12 @@ del.addEventListener('click', e => {
 
 // Display snarky error message if user tries to divide by 0
 
+
+
 // decimal button
 const dot = document.querySelector(".decimal");
 // add click function to decimal
-    //this appends the decimal to display
+//this appends the decimal to display
 dot.addEventListener('click', function (e) {
     display.textContent += ".";
-});
+})
