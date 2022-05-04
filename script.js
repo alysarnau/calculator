@@ -40,9 +40,9 @@ operators.forEach(operator => operator.addEventListener('click', e => {
 const digits = document.querySelectorAll(".digits");
 // add click function to all digits
 digits.forEach(digit => digit.addEventListener('click', e => {
-      //this appends the number to display
-      display.textContent += e.target.id;
-  })
+    //this appends the number to display
+    display.textContent += e.target.id;
+})
 );
 
 //store a, b, and operator in a text field just for kicks
@@ -106,3 +106,10 @@ del.addEventListener('click', e => {
 
 // Display snarky error message if user tries to divide by 0
 
+// decimal button
+const dot = document.querySelector(".decimal");
+// add click function to decimal
+    //this appends the decimal to display
+dot.addEventListener('click', function (e) {
+    display.textContent += ".";
+});

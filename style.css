@@ -48,6 +48,7 @@ div .sumClear {
 
 div.operators,
 div.digits,
+div.decimal,
 #sum,
 #clear,
 #del {
@@ -61,7 +62,8 @@ div.digits,
     border-radius: 5px;
 }
 
-div.digits {
+div.digits,
+.decimal {
   background-color: #EDAFB8;
 
 }
