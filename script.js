@@ -6,7 +6,6 @@ let result;
 const add = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
-
 // Different divide function to account for divide by zero!
 function divide(a,b) {
     if (b === 0 || isNaN(b)) {
@@ -15,6 +14,16 @@ function divide(a,b) {
       return a/b;
     }
 }
+
+// CREATE AN ARRAY FOR NUMBERS AND OPERATORS
+let storedValues = '0';
+let calculations = [];
+
+// POP NEW NUMBERS INTO AN ARRAY
+// calculations.push(a);
+// calculations.push()
+// THEN REDUCE TO GET RESULT
+
 
 function operate(mainOperator, a, b) {
     if (mainOperator === "multiply") {
@@ -35,12 +44,18 @@ const operators = document.querySelectorAll(".operators");
 // add click function to all numbers
 operators.forEach(operator => operator.addEventListener('click', e => {
   operator = e.target.id; 
-  displayValue = display.textContent; 
+  displayValue = parseInt(display.textContent); 
   a = parseInt(displayValue); 
   mainOperator = operator;
   resultPara.textContent = `${a} ${mainOperator}`;
+//   keep at it!
+  calculations.push(displayValue);
+  calculations.push(mainOperator);
+//   let exampleResult = calculations.reduce(function (a,b) {
+//     return result = operate(mainOperator,a,b)
+//   }, 0);
+//   console.log(calculations);
   clearDisplay();
-// trying to make operators work
   return mainOperator;
 }
 ))
@@ -59,7 +74,6 @@ const sumClear = document.querySelector('.sumClear');
 const calc = document.querySelector('#calc-container');
 const resultPara = document.createElement('p');
 calc.appendChild(resultPara);
-
 
 // key selectors
 const zero = document.querySelector("#zero");
@@ -97,6 +111,7 @@ sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
   result = operate(mainOperator,a,b);
+  calculations.push(b);
   // stops sum from running if no b or operator
   if (isNaN(b) || mainOperator === undefined) {
       return;
@@ -122,6 +137,8 @@ del.addEventListener('click', e => {
 
 // STILL NEED TO DISABLE BUTTON AFTER CLICK
 const dot = document.querySelector(".decimal");
-dot.addEventListener('click', function (e) {
-    display.textContent += ".";
-})
+dot.addEventListener('click', e => {
+  display.textContent += ".";
+});
+
+
