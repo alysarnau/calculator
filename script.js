@@ -97,6 +97,10 @@ sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
   result = operate(mainOperator,a,b);
+  // stops sum from running if no b or operator
+  if (isNaN(b) || mainOperator === undefined) {
+      return;
+  }
   if (isNaN(result)) {
     display.textContent = `${result}`;
     resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
