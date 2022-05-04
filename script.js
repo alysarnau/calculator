@@ -6,7 +6,15 @@ let result;
 const add = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
-const divide = (a,b) => a / b;
+
+// Different divide function to account for divide by zero!
+function divide(a,b) {
+    if (b === 0 || isNaN(b)) {
+      return "Cheeky!";
+    } else {
+      return a/b;
+    }
+}
 
 function operate(mainOperator, a, b) {
     if (mainOperator === "multiply") {
@@ -32,6 +40,7 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   mainOperator = operator;
   resultPara.textContent = `${a} ${mainOperator}`;
   clearDisplay();
+// trying to make operators work
   return mainOperator;
 }
 ))
@@ -51,9 +60,6 @@ const calc = document.querySelector('#calc-container');
 const resultPara = document.createElement('p');
 calc.appendChild(resultPara);
 
-//numbers create the displayValue
-//when click the operator button, that value is saved as "a"
-//
 
 // key selectors
 const zero = document.querySelector("#zero");
@@ -83,7 +89,6 @@ clear.addEventListener('click', e => {
     mainOperator = '';
 });
 
-//declare displayValue
 let displayValue;
 
 // Sum functionality
@@ -92,13 +97,18 @@ sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
   result = operate(mainOperator,a,b);
-  resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(1)}`;
-  display.textContent = `${result.toFixed(1)}`;
+  if (isNaN(result)) {
+    display.textContent = `${result}`;
+    resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
+  } else {
+    display.textContent = `${result.toFixed(1)}`;
+    resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(1)}`;
+  } 
   return result;
   }
 );
 
-// need to set up DEL functionality
+// Backspace functionality
 const del = document.querySelector("#del");
 del.addEventListener('click', e => {
     let onScreen = display.textContent 
@@ -106,14 +116,8 @@ del.addEventListener('click', e => {
     display.textContent = onScreen;
 });
 
-// Display snarky error message if user tries to divide by 0
-
-
-
-// decimal button
+// STILL NEED TO DISABLE BUTTON AFTER CLICK
 const dot = document.querySelector(".decimal");
-// add click function to decimal
-//this appends the decimal to display
 dot.addEventListener('click', function (e) {
     display.textContent += ".";
 })
