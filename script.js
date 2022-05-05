@@ -16,12 +16,14 @@ function divide(a,b) {
 }
 
 // CREATE AN ARRAY FOR NUMBERS AND OPERATORS
-let storedValues = '0';
-let calculations = [];
+let storedValues = [];
+let storedOperations = [];
+// we can then call the relevant most recent values of that to be our numbers to use
 
 // POP NEW NUMBERS INTO AN ARRAY
-// calculations.push(a);
-// calculations.push()
+// create a stored answer var that is updated with result of operation each time it runs
+// let b = storedValues.push();
+// let mainOperator = storedOperations.push()
 // THEN REDUCE TO GET RESULT
 
 
@@ -48,13 +50,6 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   a = parseInt(displayValue); 
   mainOperator = operator;
   resultPara.textContent = `${a} ${mainOperator}`;
-//   keep at it!
-  calculations.push(displayValue);
-  calculations.push(mainOperator);
-//   let exampleResult = calculations.reduce(function (a,b) {
-//     return result = operate(mainOperator,a,b)
-//   }, 0);
-//   console.log(calculations);
   clearDisplay();
   return mainOperator;
 }
@@ -111,7 +106,6 @@ sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
   result = operate(mainOperator,a,b);
-  calculations.push(b);
   // stops sum from running if no b or operator
   if (isNaN(b) || mainOperator === undefined) {
       return;
