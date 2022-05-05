@@ -20,9 +20,9 @@ let storedValues = [];
 let storedOperations = [];
 // we can then call the relevant most recent values of that to be our numbers to use
 
-// POP NEW NUMBERS INTO AN ARRAY
 // create a stored answer var that is updated with result of operation each time it runs
 // let b = storedValues.push();
+// main operator should be last operator input
 // let mainOperator = storedOperations.push()
 // THEN REDUCE TO GET RESULT
 
@@ -41,6 +41,12 @@ function operate(mainOperator, a, b) {
     }
 }
 
+// with these values in the array, we can both use them to
+// update the result paragraph, but also to call them as needed
+// for operate
+
+// we will need to update the clear button functionality
+
 // operator selectors
 const operators = document.querySelectorAll(".operators");
 // add click function to all numbers
@@ -48,7 +54,11 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   operator = e.target.id; 
   displayValue = parseInt(display.textContent); 
   a = parseInt(displayValue); 
+  //add value to array
+  storedValues.push(parseInt(displayValue));
   mainOperator = operator;
+  //add operation to array
+  storedOperations.push(operator);
   resultPara.textContent = `${a} ${mainOperator}`;
   clearDisplay();
   return mainOperator;
