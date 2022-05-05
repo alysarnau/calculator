@@ -55,10 +55,12 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   displayValue = parseInt(display.textContent); 
   a = parseInt(displayValue); 
   //add value to array
-  storedValues.push(parseInt(displayValue));
+  storedValues.push(displayValue);
+  console.log(storedValues);
   mainOperator = operator;
   //add operation to array
   storedOperations.push(operator);
+  console.log(storedOperations);
   resultPara.textContent = `${a} ${mainOperator}`;
   clearDisplay();
   return mainOperator;
@@ -146,3 +148,6 @@ dot.addEventListener('click', e => {
 });
 
 
+function updateResultPara(){
+  resultPara.textContent = `${storedValues.at(-2)} ${storedOperations.at(-1)} ${storedValues.at(-1)}`;
+}
