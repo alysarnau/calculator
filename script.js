@@ -55,7 +55,7 @@ operators.forEach(operator => operator.addEventListener('click', e => {
   displayValue = parseInt(display.textContent); 
   a = parseInt(displayValue); 
   //add value to array
-  storedValues.push(displayValue);
+  storedValues.push(a);
   console.log(storedValues);
   mainOperator = operator;
   //add operation to array
@@ -117,6 +117,8 @@ const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
   b = parseInt(displayValue);
+  //push display value to array
+  storedValues.push(b);
   result = operate(mainOperator,a,b);
   // stops sum from running if no b or operator
   if (isNaN(b) || mainOperator === undefined) {
@@ -149,5 +151,11 @@ dot.addEventListener('click', e => {
 
 
 function updateResultPara(){
-  resultPara.textContent = `${storedValues.at(-2)} ${storedOperations.at(-1)} ${storedValues.at(-1)}`;
+  // if (isNaN(result)) {
+    resultPara.textContent = `${storedValues.at(-2)} ${storedOperations.at(-1)} ${storedValues.at(-1)} 
+    equals RESULTPLACEHOLDER`;
+  // } else {
+  //   resultPara.textContent = `${storedValues.at(-2)} ${storedOperations.at(-1)} ${storedValues.at(-1)} 
+  //     equals ${result.toFixed(1)}`;
+  // } 
 }
