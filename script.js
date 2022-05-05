@@ -99,6 +99,7 @@ let display = document.querySelector("#display");
 
 // Clear Button Functionality
 const clear = document.querySelector("#clear");
+let calcContent = document.getElementById("calc-container").innerHTML;
 function clearDisplay() {
     display.textContent = '';
 };
