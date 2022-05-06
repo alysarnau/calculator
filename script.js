@@ -53,16 +53,38 @@ const operators = document.querySelectorAll(".operators");
 operators.forEach(operator => operator.addEventListener('click', e => {
   operator = e.target.id; 
   displayValue = parseInt(display.textContent); 
-  a = parseInt(displayValue); 
+  storedValues.push(parseInt(displayValue)); 
   //add value to array
-  storedValues.push(a);
+  a = storedValues.at(-1)
   console.log(storedValues);
   mainOperator = operator;
   //add operation to array
-  storedOperations.push(operator);
+  storedOperations.push(mainOperator);
   console.log(storedOperations);
-  resultPara.textContent = `${a} ${mainOperator}`;
+  resultPara.textContent = `${storedValues.at(-1)} ${storedOperations.at(-1)}`;
   clearDisplay();
+  // if length of stored values exceeds 1, then can run operate
+  if (storedValues.length > 1) {
+    displayValue = display.textContent; 
+    storedValues.push(parseInt(displayValue));
+    //push display value to array
+    b = storedValues.at(-1)
+    a = storedValues.at(-2)
+    mainOperator = storedOperations.at(-1)
+    result = operate(mainOperator,a,b);
+    // stops sum from running if no b or operator
+    if (isNaN(b) || mainOperator === undefined) {
+        return;
+    }
+    if (isNaN(result)) {
+      display.textContent = `${result}`;
+      resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
+    } else {
+      display.textContent = `${result.toFixed(1)}`;
+      resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(1)}`;
+    } 
+    return result;
+    }
   return mainOperator;
 }
 ))
@@ -99,16 +121,14 @@ let display = document.querySelector("#display");
 
 // Clear Button Functionality
 const clear = document.querySelector("#clear");
-let calcContent = document.getElementById("calc-container").innerHTML;
 function clearDisplay() {
     display.textContent = '';
 };
 clear.addEventListener('click', e => {
-    clearDisplay();
     resultPara.textContent = '';
-    a = '';
-    b = '';
-    mainOperator = '';
+    storedOperations = [];
+    storedValues = [];
+    clearDisplay();
 });
 
 let displayValue;
@@ -117,10 +137,13 @@ let displayValue;
 const sum = document.querySelector("#sum");
 sum.addEventListener('click', e => {
   displayValue = display.textContent; 
-  b = parseInt(displayValue);
+  storedValues.push(parseInt(displayValue));
   //push display value to array
-  storedValues.push(b);
+  b = storedValues.at(-1)
+  a = storedValues.at(-2)
+  mainOperator = storedOperations.at(-1)
   result = operate(mainOperator,a,b);
+  storedValues.push(parseInt(result))
   // stops sum from running if no b or operator
   if (isNaN(b) || mainOperator === undefined) {
       return;
