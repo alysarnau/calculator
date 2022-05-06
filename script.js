@@ -1,8 +1,41 @@
-//select numbers
-//operators
-//etc
+class calculator {
+  constructor(previousOperandText, currentOperandText) {
+    this.previousOperandText = previousOperandText;
+    this.currentOperandText = currentOperandText;
+  }
 
+  clear() {
 
+  };
+
+  delete() {
+
+  };
+
+  appendNumber(number) {
+
+  };
+
+  chooseOperation(operation) {
+
+  };
+  
+  operate() {
+
+  };
+
+  updateDisplay() {
+
+  };
+}
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const allClearButton = document.querySelector('[data-all-clear]');
+const deleteButton = document.querySelector('[data-delete]');
+const previousOperandText = document.querySelector('[data-previous-operand]');
+const currentOperandText = document.querySelector('[data-current-operand]');
 
 
 
