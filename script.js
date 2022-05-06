@@ -12,7 +12,7 @@ class Calculator {
   };
 
   delete() {
-
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
   };
 
   appendNumber(number) {
@@ -40,20 +40,29 @@ class Calculator {
         result = prev + current;
         break
       case '-': 
-        result = prev + current;
+        result = prev - current;
         break
       case 'x': 
-        result = prev + current;
+        result = prev * current;
         break
       case '÷': 
-        result = prev + current;
+        result = prev / current;
         break
+      default: 
+        return
     }
+    this.currentOperand = result;
+    this.operation = undefined;
+    this.previousOperand = '';
   }
 
   updateDisplay() {
     this.currentOperandTextElement.innerText = this.currentOperand;
     this.previousOperandTextElement.innerText = this.previousOperand;
+    if (this.operation != null) {
+      this.previousOperandTextElement.innerText = 
+        `${this.previousOperand} ${this.operation}`
+    }
   };
 }
 
@@ -83,5 +92,15 @@ operationButtons.forEach(button => {
 
 equalsButton.addEventListener('click', button => {
   calculator.operate();
+  calculator.updateDisplay();
+})
+
+allClearButton.addEventListener('click', button => {
+  calculator.clear();
+  calculator.updateDisplay();
+})
+
+deleteButton.addEventListener('click', button => {
+  calculator.delete();
   calculator.updateDisplay();
 })
