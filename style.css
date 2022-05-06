@@ -41,15 +41,6 @@ body {
     align-items: center;
 }
 
-div .sumClear {
-  display: flex;
-  gap: 3px;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
 div.operators,
 div.digits,
 div.decimal,
