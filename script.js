@@ -111,18 +111,33 @@ deleteButton.addEventListener('click', button => {
   calculator.updateDisplay();
 })
 
-// add in keyboard support!
-
+// keyboard support
 window.addEventListener('keydown', (event) => {
   let name = event.key;
-  // Alert the key name and key code on keydown
-  console.log(`Key pressed ${name}`);
-  if (isNaN(name)){
+  if (name === "+"){
+    calculator.chooseOperation("+");
+    calculator.updateDisplay();
+  } else if (name === "-"){
+    calculator.chooseOperation("-");
+    calculator.updateDisplay();
+  } else if (name === "/"){
+    calculator.chooseOperation("÷");
+    calculator.updateDisplay();
+  } else if (name === "x"){
+    calculator.chooseOperation("x");
+    calculator.updateDisplay();
+  } else if (name === "*"){
+    calculator.chooseOperation("x");
+    calculator.updateDisplay();
+  } else if (name === "="){
+    calculator.operate();
+    calculator.updateDisplay();
+  } else if (name == "Enter"){
+    calculator.operate();
+    calculator.updateDisplay();
+  } else if ((isNaN(name)) && (name !== ".")){
     return;
   } else {
   calculator.appendNumber(`${name}`);
   calculator.updateDisplay()
 }}, false);
-
-// we want so that when keydown of number, the value of the number key is appended to the current operand
-// and then when keydown of operation, the value of operation is used as operation
