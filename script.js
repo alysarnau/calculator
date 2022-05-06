@@ -29,57 +29,43 @@ class Calculator {
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
   };
-  // aka compute
   operate() {
     let result;
     const prev = parseFloat(this.previousOperand);
     const current = parseFloat(this.currentOperand);
     if (isNaN(prev) || isNaN(current)) return;
-    switch (this.operation) {
-      case '+': 
-        result = prev + current;
-        break
-      case '-': 
-        result = prev - current;
-        break
-      case 'x': 
-        result = prev * current;
-        break
-      case '÷': 
-        result = prev / current;
-        break
-      default: 
-        return
+    if (this.operation === "+") {
+      result = prev + current;
+    } else if (this.operation === "-") {
+      result = prev - current;
+    } else if (this.operation === "x") {
+      result = prev * current;
+    } else if ((this.operation === "÷") && (this.currentOperand === "0")) {
+      alert("NO WAY. Try again!");
+      return;
+    } else if (this.operation === "÷") {
+      result = prev / current;
+    } else {
+      return;
     }
-    this.currentOperand = result;
+    this.currentOperand = result.toFixed(2);
     this.operation = undefined;
     this.previousOperand = '';
   }
 
-  getDisplayNumber(number) {
-    const stringNumber = number.toString();
-    const integerDigits = parseFloat(stringNumber.split('.')[0])
-    const decimalDigits = (stringNumber.split('.')[1])
-    let integerDisplay;
-    if (isNaN(integerDigits)) {
-      integerDisplay = '';
-    } else {
-      integerDisplay = integerDigits.toLocaleString('en', {
-        maximumFractionDigits: 0 })
-    }
-    if (decimalDigits != null) {
-      return `${integerDisplay}.${decimalDigits}`
-    } else {
-      return integerDisplay
-    }
+  checkDivByZero() {
+    let result;
+    const prev = parseFloat(this.previousOperand);
+    const current = parseFloat(this.currentOperand);
+    if (isNaN(result) || !isFinite(result)) return;
   }
 
   updateDisplay() {
     this.currentOperandTextElement.innerText = 
-      this.getDisplayNumber(this.currentOperand);
+      this.currentOperand;
     if (this.operation != null) {
       this.previousOperandTextElement.innerText = 
-        `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        `${this.previousOperand} ${this.operation}`
     } else {
       this.previousOperandTextElement.innerText = '';
     }
