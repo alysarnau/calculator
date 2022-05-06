@@ -112,8 +112,9 @@ deleteButton.addEventListener('click', button => {
 })
 
 // keyboard support
-window.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
   let name = event.key;
+  console.log(name);
   if (name === "+"){
     calculator.chooseOperation("+");
     calculator.updateDisplay();
@@ -134,6 +135,12 @@ window.addEventListener('keydown', (event) => {
     calculator.updateDisplay();
   } else if (name == "Enter"){
     calculator.operate();
+    calculator.updateDisplay();
+  } else if (name === "Backspace"){
+    calculator.delete();
+    calculator.updateDisplay();
+  } else if (name === "Escape"){
+    calculator.clear();
     calculator.updateDisplay();
   } else if ((isNaN(name)) && (name !== ".")){
     return;
