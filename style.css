@@ -1,85 +1,18 @@
-body {
+*, *::before, *::after {
+    box-sizing: border-box;
     font-family: "Comic Sans MS", "QD Better Comic Sans", sans-serif;
-    font-size: 20px;
-    background: linear-gradient(to right, whitesmoke, pink)
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, whitesmoke, #EDAFB8);
 }
 
 .calculator-grid {
-    height: 500px;
-    width: 400px;
-    background-color: #4A5759;
-    border: 5px solid black;
-    border-radius: 10px;
-    padding: 15px;
-}
-
-.calculator-grid >
-
-.display {
-    border: 2px solid #DEDBD2;
-    border-radius: 5px;
-    box-sizing: border-box;
-    height: 75px;
-    background-color: whitesmoke;
-    display: flex;
-    align-items: center;
-    font-size: 28px;
-    margin-bottom: 5px;
-    padding: 5px;
-}
-
-.nonDisplay {
     display: grid;
-    gap: 3px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 7;
-    justify-content: space-around;
-    align-items: center;
-}
-
-div.operators,
-div.digits,
-div.decimal,
-#sum,
-#clear,
-#del {
-    width: 95px;
-    height: 80px;
-    border: 1px solid black;
-    text-align: center;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    align-items: center;
 }
 
-div.digits,
-.decimal {
-  background-color: #EDAFB8;
-
-}
-
-div.operators {
-    background-color: #B0C4B1;
-}
-
-#clear,
-#sum,
-#del {
-    background-color: #F7E1D7;
-}
-
-#del,
-#clear {
-    width: 146px;
-}
-
-
-#sum {
-    grid-column: span 2;
-    width: 195px;
-}
