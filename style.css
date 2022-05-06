@@ -4,7 +4,7 @@ body {
     background: linear-gradient(to right, whitesmoke, pink)
 }
 
-#calc-container {
+.calculator-grid {
     height: 500px;
     width: 400px;
     background-color: #4A5759;
@@ -13,7 +13,7 @@ body {
     padding: 15px;
 }
 
-#calc-container >
+.calculator-grid >
 
 .display {
     border: 2px solid #DEDBD2;

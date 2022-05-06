@@ -94,7 +94,7 @@ digits.forEach(digit => digit.addEventListener('click', e => {
 );
 //store a, b, and operator in a text field just for kicks
 const sumClear = document.querySelector('.sumClear');
-const calc = document.querySelector('#calc-container');
+const calc = document.querySelector('.calculator-grid');
 const resultPara = document.createElement('p');
 calc.appendChild(resultPara);
 // key selectors
