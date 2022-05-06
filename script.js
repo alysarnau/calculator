@@ -18,15 +18,7 @@ function divide(a,b) {
 // CREATE AN ARRAY FOR NUMBERS AND OPERATORS
 let storedValues = [];
 let storedOperations = [];
-// we can then call the relevant most recent values of that to be our numbers to use
-
-// create a stored answer var that is updated with result of operation each time it runs
-// let b = storedValues.push();
-// main operator should be last operator input
-// let mainOperator = storedOperations.push()
-// THEN REDUCE TO GET RESULT
-
-
+// operate function
 function operate(mainOperator, a, b) {
     if (mainOperator === "multiply") {
         return multiply(a,b);
@@ -41,97 +33,32 @@ function operate(mainOperator, a, b) {
     }
 }
 
-// with these values in the array, we can both use them to
-// update the result paragraph, but also to call them as needed
-// for operate
-
-// we will need to update the clear button functionality
-
 // operator selectors
 const operators = document.querySelectorAll(".operators");
-// add click function to all numbers
 operators.forEach(operator => operator.addEventListener('click', e => {
   operator = e.target.id; 
   displayValue = parseInt(display.textContent); 
-  storedValues.push(parseInt(displayValue)); 
-  //add value to array
-  a = storedValues.at(-1)
-  console.log(storedValues);
+  storedValues.push(displayValue); 
   mainOperator = operator;
-  //add operation to array
   storedOperations.push(mainOperator);
-  console.log(storedOperations);
-  resultPara.textContent = `${storedValues.at(-1)} ${storedOperations.at(-1)}`;
-  clearDisplay();
-  // if length of stored values exceeds 1, then can run operate
-  if (storedValues.length > 1) {
-    displayValue = display.textContent; 
-    storedValues.push(parseInt(displayValue));
-    //push display value to array
-    b = storedValues.at(-1)
-    a = storedValues.at(-2)
-    mainOperator = storedOperations.at(-1)
-    result = operate(mainOperator,a,b);
-    // stops sum from running if no b or operator
-    if (isNaN(b) || mainOperator === undefined) {
-        return;
-    }
+  if (storedValues.length >= 2) {
+    result = operate(storedOperations.at(-2),storedValues.at(-2),storedValues.at(-1));
+    storedValues.push(result);
+    console.log(result);
     if (isNaN(result)) {
       display.textContent = `${result}`;
-      resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result}`;
+      resultPara.textContent += `${storedOperations.at(-1)} ${storedValues.at(-1)}`;
     } else {
       display.textContent = `${result.toFixed(1)}`;
-      resultPara.textContent = `${a} ${mainOperator} ${b} equals ${result.toFixed(1)}`;
+      resultPara.textContent += `${storedOperations.at(-2)} ${storedValues.at(-2)} equals ${storedValues.at(-1)}`;
     } 
-    return result;
-    }
+  } else {
+  resultPara.textContent = `${storedValues.at(-1)} ${storedOperations.at(-1)}`;
+  clearDisplay();
   return mainOperator;
+  }
 }
 ))
-
-// digit buttons
-const digits = document.querySelectorAll(".digits");
-// add click function to all digits
-digits.forEach(digit => digit.addEventListener('click', e => {
-    //this appends the number to display
-    display.textContent += e.target.id;
-})
-);
-
-//store a, b, and operator in a text field just for kicks
-const sumClear = document.querySelector('.sumClear');
-const calc = document.querySelector('#calc-container');
-const resultPara = document.createElement('p');
-calc.appendChild(resultPara);
-
-// key selectors
-const zero = document.querySelector("#zero");
-const one = document.querySelector("#one");
-const two = document.querySelector("#two");
-const three = document.querySelector("#three");
-const four = document.querySelector("#four");
-const five = document.querySelector("#five");
-const six = document.querySelector("#six");
-const seven = document.querySelector("#seven");
-const eight = document.querySelector("#eight");
-const nine = document.querySelector("#nine");
-
-//display selector
-let display = document.querySelector("#display");
-
-// Clear Button Functionality
-const clear = document.querySelector("#clear");
-function clearDisplay() {
-    display.textContent = '';
-};
-clear.addEventListener('click', e => {
-    resultPara.textContent = '';
-    storedOperations = [];
-    storedValues = [];
-    clearDisplay();
-});
-
-let displayValue;
 
 // Sum functionality
 const sum = document.querySelector("#sum");
@@ -159,6 +86,42 @@ sum.addEventListener('click', e => {
   }
 );
 
+// digit buttons
+const digits = document.querySelectorAll(".digits");
+digits.forEach(digit => digit.addEventListener('click', e => {
+    display.textContent += e.target.id;
+})
+);
+//store a, b, and operator in a text field just for kicks
+const sumClear = document.querySelector('.sumClear');
+const calc = document.querySelector('#calc-container');
+const resultPara = document.createElement('p');
+calc.appendChild(resultPara);
+// key selectors
+const zero = document.querySelector("#zero");
+const one = document.querySelector("#one");
+const two = document.querySelector("#two");
+const three = document.querySelector("#three");
+const four = document.querySelector("#four");
+const five = document.querySelector("#five");
+const six = document.querySelector("#six");
+const seven = document.querySelector("#seven");
+const eight = document.querySelector("#eight");
+const nine = document.querySelector("#nine");
+let display = document.querySelector("#display");
+// Clear Button Functionality
+const clear = document.querySelector("#clear");
+function clearDisplay() {
+    display.textContent = '';
+};
+clear.addEventListener('click', e => {
+    resultPara.textContent = '';
+    storedOperations = [];
+    storedValues = [];
+    clearDisplay();
+});
+let displayValue;
+
 // Backspace functionality
 const del = document.querySelector("#del");
 del.addEventListener('click', e => {
@@ -172,7 +135,6 @@ const dot = document.querySelector(".decimal");
 dot.addEventListener('click', e => {
   display.textContent += ".";
 });
-
 
 function updateResultPara(){
   // if (isNaN(result)) {
